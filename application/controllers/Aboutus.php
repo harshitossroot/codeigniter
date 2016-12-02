@@ -6,18 +6,19 @@ class Aboutus extends CI_Controller
     $this->load->model('Data');
   }
 
+  private function reusable(){
+    $data['data'] = $this->Data->pages();
+    $this->load->view('includes/header',$data);
+    $this->load->view('pages');
+    $this->load->view('includes/footer');
+  }
+
   public function index(){
-      $data['data'] = $this->Data->pages();
-      $this->load->view('includes/header',$data);
-      $this->load->view('pages');
-      $this->load->view('includes/footer');
+      $this->reusable();
   }
 
   public function companies(){
-      $data['data'] = $this->Data->pages();
-      $this->load->view('includes/header',$data);
-      $this->load->view('pages');
-      $this->load->view('includes/footer');
+      $this->reusable();
   }
 
 }
